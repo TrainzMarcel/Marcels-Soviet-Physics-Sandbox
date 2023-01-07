@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/lamp.obj-3969900cff8507d9e4c31505655b7613.mesh"
+
+[deps]
+
+files=[ "res://.import/lamp.obj-3969900cff8507d9e4c31505655b7613.mesh" ]
+
+source_file="res://meshes/streetlamp/lamp.obj"
+dest_files=[ "res://.import/lamp.obj-3969900cff8507d9e4c31505655b7613.mesh", "res://.import/lamp.obj-3969900cff8507d9e4c31505655b7613.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

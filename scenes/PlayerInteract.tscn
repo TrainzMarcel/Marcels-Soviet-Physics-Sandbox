@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/PlayerInteract.lua" type="Script" id=1]
+
+[node name="PlayerInteract" type="Area"]
+script = ExtResource( 1 )

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/cra3.obj-cb4129f6bcab9e49d86b611c2154135d.mesh"
+
+[deps]
+
+files=[ "res://.import/cra3.obj-cb4129f6bcab9e49d86b611c2154135d.mesh" ]
+
+source_file="res://Prefabs/cra3.obj"
+dest_files=[ "res://.import/cra3.obj-cb4129f6bcab9e49d86b611c2154135d.mesh", "res://.import/cra3.obj-cb4129f6bcab9e49d86b611c2154135d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

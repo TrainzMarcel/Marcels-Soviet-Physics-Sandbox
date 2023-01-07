@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/prototypevehicle/Prototype2Suspension.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prototypevehicle/RoadVehiclePrototype2.lua" type="Script" id=2]
+[ext_resource path="res://scenes/VehicleSeat.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.499233, 0.15, 1.5 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 1, 0.3, 3 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.373723, 0.608956, 0.125399 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.373723, 0.207371, 0.337602 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.723, 1.393, 0.204 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 0.723, 0.291, 0.759 )
+
+[node name="RigidBody" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+mass = 4.0
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+
+[node name="VehicleSeat" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.947028, 0 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 0.990321, -0.138793, 0, 0.138793, 0.990321, 0, -0.088716, 0.308601 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.687857, -0.0471306 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 0.994737, -0.102463, 0, 0.102463, 0.994737, 0, -0.176663, 0.292706 )
+mesh = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779054, -0.0385284 )
+mesh = SubResource( 6 )
+
+[node name="WheelL1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.245316, -1 )
+damping = 400.0
+stiffness = 800.0
+debug = true
+
+[node name="WheelL2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.245316, 1 )
+damping = 400.0
+stiffness = 800.0
+
+[node name="WheelL3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.245316, -1 )
+damping = 400.0
+stiffness = 800.0
+
+[node name="WheelL4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.245316, 1 )
+damping = 400.0
+stiffness = 800.0
+
+[connection signal="pressed" from="VehicleSeat" to="." method="_on_VehicleSeat_pressed"]

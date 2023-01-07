@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Collider" type="CSGPolygon"]
+polygon = PoolVector2Array( -0.6, -0.2, -0.6, 0.15, -0.375, 0.15, -0.375, -0.19, 0.375, -0.19, 0.375, 0.15, 0.6, 0.15, 0.6, -0.2 )
+mode = 2
+path_node = NodePath("")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false

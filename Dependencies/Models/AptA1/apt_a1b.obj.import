@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/apt_a1b.obj-d3c75aaefd7ee72fdc43a73cf78e3cd1.mesh"
+
+[deps]
+
+files=[ "res://.import/apt_a1b.obj-d3c75aaefd7ee72fdc43a73cf78e3cd1.mesh" ]
+
+source_file="res://Models/AptA1/apt_a1b.obj"
+dest_files=[ "res://.import/apt_a1b.obj-d3c75aaefd7ee72fdc43a73cf78e3cd1.mesh", "res://.import/apt_a1b.obj-d3c75aaefd7ee72fdc43a73cf78e3cd1.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

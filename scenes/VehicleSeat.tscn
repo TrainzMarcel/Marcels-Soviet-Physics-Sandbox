@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/PlayerInteract.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/CameraNode.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/VehicleSeat.lua" type="Script" id=3]
+
+[node name="VehicleSeat" instance=ExtResource( 1 )]
+__meta__ = {
+"_editor_description_": "Seat Node. Requires a child collisionshape to work. Sends out a signal when the player hits e on the child collider."
+}
+
+[node name="Spatial" type="Spatial" parent="." index="0"]
+script = ExtResource( 3 )
+
+[node name="CameraNode" parent="Spatial" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38085, 0 )
+active = false
+
+[connection signal="pressed" from="." to="Spatial" method="_on_VehicleSeat_pressed"]

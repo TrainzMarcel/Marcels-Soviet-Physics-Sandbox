@@ -1,0 +1,264 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Code/ThirdPersonCam.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/Drive.cs" type="Script" id=2]
+[ext_resource path="res://Textures/icon.png" type="Texture" id=3]
+[ext_resource path="res://Prefabs/cra3.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Prefabs/SpringJoint.tscn" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.175, 0.231, 1.365 )
+
+[sub_resource type="CubeMesh" id=10]
+size = Vector3( 0.2, 0.2, 0.2 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.594, 0.224, 0.658 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.151398, 0.0977111, 0.146363 )
+
+[sub_resource type="PhysicsMaterial" id=9]
+friction = 0.82
+rough = true
+
+[sub_resource type="SphereShape" id=5]
+radius = 0.234
+
+[sub_resource type="SphereMesh" id=6]
+radius = 0.234
+height = 0.468
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 3 )
+uv1_offset = Vector3( 0.543, -0.304, 0 )
+
+[node name="Chassis V01" type="Spatial"]
+
+[node name="MainBody" type="RigidBody" parent="."]
+can_sleep = false
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+linear_damp = 3.739
+script = ExtResource( 2 )
+
+[node name="ThirdPersonCam" parent="MainBody" instance=ExtResource( 1 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="MainBody"]
+shape = SubResource( 1 )
+
+[node name="cra3" type="MeshInstance" parent="MainBody"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.196916, 0 )
+mesh = ExtResource( 4 )
+
+[node name="SpringJointL1" parent="MainBody" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.131655, -0.902 )
+debug = true
+stiffness = 2500.0
+damping = 1000.0
+restlen = 0.5
+apath = NodePath("..")
+bpath = NodePath("../../HubBodyL1")
+
+[node name="MeshInstance" type="MeshInstance" parent="MainBody/SpringJointL1"]
+mesh = SubResource( 10 )
+
+[node name="SpringJointR1" parent="MainBody" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.131655, -0.902 )
+stiffness = 2500.0
+damping = 1000.0
+restlen = 0.5
+apath = NodePath("..")
+bpath = NodePath("../../HubBodyR1")
+
+[node name="MeshInstance" type="MeshInstance" parent="MainBody/SpringJointR1"]
+mesh = SubResource( 10 )
+
+[node name="SpringJointL2" parent="MainBody" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.131655, 0.828925 )
+stiffness = 2500.0
+damping = 1000.0
+restlen = 0.5
+apath = NodePath("..")
+bpath = NodePath("../../HubBodyL2")
+
+[node name="MeshInstance" type="MeshInstance" parent="MainBody/SpringJointL2"]
+mesh = SubResource( 10 )
+
+[node name="SpringJointR2" parent="MainBody" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.131655, 0.828925 )
+stiffness = 2500.0
+damping = 1000.0
+restlen = 0.5
+apath = NodePath("..")
+bpath = NodePath("../../HubBodyR2")
+
+[node name="MeshInstance" type="MeshInstance" parent="MainBody/SpringJointR2"]
+mesh = SubResource( 10 )
+
+[node name="-------------------------0" type="Node" parent="."]
+
+[node name="SuspensionL1" type="SliderJoint" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.55, -0.341561, -0.90231 )
+nodes/node_a = NodePath("../MainBody")
+nodes/node_b = NodePath("../HubBodyL1")
+linear_limit/upper_distance = 0.25
+linear_limit/lower_distance = -8.0
+linear_limit/softness = 0.01
+linear_motion/damping = 10.84
+angular_limit/upper_angle = 45.0
+angular_limit/lower_angle = -45.0
+angular_motion/damping = 16.0
+
+[node name="HubBodyL1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.341561, -0.90231 )
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="HubBodyL1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143162 )
+visible = false
+mesh = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HubBodyL1"]
+shape = SubResource( 8 )
+
+[node name="HingeJointL1" type="HingeJoint" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.55, -0.341561, -0.90231 )
+nodes/node_a = NodePath("../HubBodyL1")
+nodes/node_b = NodePath("../WheelBodyL1")
+
+[node name="WheelBodyL1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.341561, -0.90231 )
+physics_material_override = SubResource( 9 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="WheelBodyL1"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelBodyL1"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="-------------------------1" type="Node" parent="."]
+
+[node name="SuspensionL2" type="SliderJoint" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.55, -0.341561, 0.831195 )
+nodes/node_a = NodePath("../MainBody")
+nodes/node_b = NodePath("../HubBodyL2")
+linear_limit/upper_distance = 0.25
+linear_limit/lower_distance = -8.0
+linear_limit/softness = 0.01
+linear_motion/damping = 10.84
+angular_motion/damping = 16.0
+
+[node name="HubBodyL2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.341561, 0.831195 )
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="HubBodyL2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143162 )
+visible = false
+mesh = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HubBodyL2"]
+shape = SubResource( 8 )
+
+[node name="HingeJointL2" type="HingeJoint" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.55, -0.341561, 0.831195 )
+nodes/node_a = NodePath("../HubBodyL2")
+nodes/node_b = NodePath("../WheelBodyL2")
+
+[node name="WheelBodyL2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.341561, 0.831195 )
+physics_material_override = SubResource( 9 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="WheelBodyL2"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelBodyL2"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="-------------------------2" type="Node" parent="."]
+
+[node name="SuspensionR1" type="SliderJoint" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.55, -0.341561, -0.90231 )
+nodes/node_a = NodePath("../MainBody")
+nodes/node_b = NodePath("../HubBodyR1")
+linear_limit/upper_distance = 0.25
+linear_limit/lower_distance = -8.0
+linear_limit/softness = 0.01
+linear_motion/damping = 10.84
+angular_limit/upper_angle = 45.0
+angular_limit/lower_angle = -45.0
+
+[node name="HubBodyR1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.341561, -0.90231 )
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="HubBodyR1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143162 )
+visible = false
+mesh = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HubBodyR1"]
+shape = SubResource( 8 )
+
+[node name="HingeJointR1" type="HingeJoint" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.55, -0.341561, -0.90231 )
+nodes/node_a = NodePath("../HubBodyR1")
+nodes/node_b = NodePath("../WheelBodyR1")
+
+[node name="WheelBodyR1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.341561, -0.90231 )
+physics_material_override = SubResource( 9 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="WheelBodyR1"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelBodyR1"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="-------------------------3" type="Node" parent="."]
+
+[node name="SuspensionR2" type="SliderJoint" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.55, -0.341561, 0.831195 )
+nodes/node_a = NodePath("../MainBody")
+nodes/node_b = NodePath("../HubBodyR2")
+linear_limit/upper_distance = 0.25
+linear_limit/lower_distance = -8.0
+linear_limit/softness = 0.01
+linear_motion/damping = 10.84
+
+[node name="HubBodyR2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.341561, 0.831195 )
+can_sleep = false
+
+[node name="MeshInstance" type="MeshInstance" parent="HubBodyR2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.143162 )
+visible = false
+mesh = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HubBodyR2"]
+shape = SubResource( 8 )
+
+[node name="HingeJointR2" type="HingeJoint" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.55, -0.341561, 0.831195 )
+nodes/node_a = NodePath("../HubBodyR2")
+nodes/node_b = NodePath("../WheelBodyR2")
+
+[node name="WheelBodyR2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.341561, 0.831195 )
+physics_material_override = SubResource( 9 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="WheelBodyR2"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelBodyR2"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )

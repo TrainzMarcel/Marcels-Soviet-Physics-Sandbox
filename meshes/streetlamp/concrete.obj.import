@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/concrete.obj-caedf704b4752a7b3dccf97d30ef054b.mesh"
+
+[deps]
+
+files=[ "res://.import/concrete.obj-caedf704b4752a7b3dccf97d30ef054b.mesh" ]
+
+source_file="res://meshes/streetlamp/concrete.obj"
+dest_files=[ "res://.import/concrete.obj-caedf704b4752a7b3dccf97d30ef054b.mesh", "res://.import/concrete.obj-caedf704b4752a7b3dccf97d30ef054b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

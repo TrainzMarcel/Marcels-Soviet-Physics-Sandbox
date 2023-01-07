@@ -1,0 +1,134 @@
+[gd_resource type="VisualShader" load_steps=9 format=2]
+
+[ext_resource path="res://Textures/gradient256.tres" type="Gradient" id=1]
+
+[sub_resource type="VisualShaderNodeColorOp" id=7]
+output_port_for_preview = 0
+operator = 4
+
+[sub_resource type="GradientTexture" id=21]
+gradient = ExtResource( 1 )
+
+[sub_resource type="VisualShaderNodeTexture" id=10]
+output_port_for_preview = 0
+texture = SubResource( 21 )
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=16]
+output_port_for_preview = 0
+uniform_name = "ColorMap"
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=17]
+uniform_name = "DiffuseTexture"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeColorUniform" id=18]
+output_port_for_preview = 0
+uniform_name = "ColorUniform"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorOp" id=19]
+output_port_for_preview = 0
+operator = 3
+
+[resource]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, async_visible;
+
+uniform sampler2D DiffuseTexture : hint_albedo;
+uniform vec4 ColorUniform : hint_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform sampler2D ColorMap;
+uniform sampler2D tex_frg_26;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:32
+	vec3 n_out32p0;
+	float n_out32p1;
+	{
+		vec4 n_tex_read = texture(DiffuseTexture, UV.xy);
+		n_out32p0 = n_tex_read.rgb;
+		n_out32p1 = n_tex_read.a;
+	}
+
+// ColorUniform:34
+	vec3 n_out34p0 = ColorUniform.rgb;
+	float n_out34p1 = ColorUniform.a;
+
+// TextureUniform:29
+	vec3 n_out29p0;
+	float n_out29p1;
+	{
+		vec4 n_tex_read = texture(ColorMap, UV.xy);
+		n_out29p0 = n_tex_read.rgb;
+		n_out29p1 = n_tex_read.a;
+	}
+
+// Texture:26
+	vec4 tex_frg_26_read = texture(tex_frg_26, n_out29p0.xy);
+	vec3 n_out26p0 = tex_frg_26_read.rgb;
+	float n_out26p1 = tex_frg_26_read.a;
+
+// ColorOp:35
+	vec3 n_out35p0 = max(n_out34p0, n_out26p0);
+
+// ColorOp:24
+	vec3 n_out24p0;
+	{
+		float base = n_out32p0.x;
+		float blend = n_out35p0.x;
+		if (base < 0.5) {
+			n_out24p0.x = 2.0 * base * blend;
+		} else {
+			n_out24p0.x = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
+		}
+	}
+	{
+		float base = n_out32p0.y;
+		float blend = n_out35p0.y;
+		if (base < 0.5) {
+			n_out24p0.y = 2.0 * base * blend;
+		} else {
+			n_out24p0.y = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
+		}
+	}
+	{
+		float base = n_out32p0.z;
+		float blend = n_out35p0.z;
+		if (base < 0.5) {
+			n_out24p0.z = 2.0 * base * blend;
+		} else {
+			n_out24p0.z = 1.0 - 2.0 * (1.0 - blend) * (1.0 - base);
+		}
+	}
+
+// Output:0
+	ALBEDO = n_out24p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -398.158, -205.991 )
+nodes/fragment/0/position = Vector2( 1200, 40 )
+nodes/fragment/24/node = SubResource( 7 )
+nodes/fragment/24/position = Vector2( 460, -120 )
+nodes/fragment/26/node = SubResource( 10 )
+nodes/fragment/26/position = Vector2( -100, 160 )
+nodes/fragment/29/node = SubResource( 16 )
+nodes/fragment/29/position = Vector2( -360, 160 )
+nodes/fragment/32/node = SubResource( 17 )
+nodes/fragment/32/position = Vector2( -40, -360 )
+nodes/fragment/34/node = SubResource( 18 )
+nodes/fragment/34/position = Vector2( -360, -120 )
+nodes/fragment/35/node = SubResource( 19 )
+nodes/fragment/35/position = Vector2( 100, 200 )
+nodes/fragment/connections = PoolIntArray( 24, 0, 0, 0, 26, 0, 35, 1, 34, 0, 35, 0, 32, 0, 24, 0, 29, 0, 26, 0, 35, 0, 24, 1 )

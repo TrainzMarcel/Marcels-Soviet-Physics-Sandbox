@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Models/AptA1/apt_a1a.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Textures/apta1e.png" type="Texture" id=2]
+[ext_resource path="res://Models/AptA1/apt_a1b.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.10934, 1.59611, 0.761298 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.776471, 0.776471, 0.776471, 1 )
+albedo_texture = ExtResource( 2 )
+
+[node name="AptA1E" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 17.2, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.133527, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = SubResource( 4 )

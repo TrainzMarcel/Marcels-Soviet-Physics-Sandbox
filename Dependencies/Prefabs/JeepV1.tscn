@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Models/Jeep/jep2.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Models/Jeep/jeeptexture.png" type="Texture" id=2]
+[ext_resource path="res://Code/Jeep.cs" type="Script" id=3]
+[ext_resource path="res://Models/Jeep/jeepwheel.png" type="Texture" id=4]
+[ext_resource path="res://Models/Jeep/jep.obj" type="ArrayMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.648839, 0.629749, 1.26276 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 4 )
+
+[node name="JeepV1" type="VehicleBody"]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.321623, 0.124373 )
+mesh = ExtResource( 5 )
+skeleton = NodePath("")
+material/0 = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.34723, 0, 0, 0, 1, 0, -0.174826, -0.0754304 )
+shape = SubResource( 2 )
+
+[node name="WheelR1" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53, -0.510136, 0.813694 )
+use_as_steering = true
+wheel_radius = 0.27
+wheel_rest_length = 0.1
+wheel_friction_slip = 2.0
+suspension_stiffness = 45.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelR1"]
+mesh = ExtResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="WheelR2" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53, -0.510136, -0.875666 )
+use_as_traction = true
+wheel_radius = 0.27
+wheel_rest_length = 0.1
+wheel_friction_slip = 2.0
+suspension_stiffness = 45.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelR2"]
+mesh = ExtResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="WheelL1" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53, -0.510136, 0.813924 )
+use_as_steering = true
+wheel_radius = 0.27
+wheel_rest_length = 0.1
+wheel_friction_slip = 2.0
+suspension_stiffness = 45.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelL1"]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -1.19209e-07, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="WheelL2" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53, -0.510136, -0.876068 )
+use_as_traction = true
+wheel_radius = 0.27
+wheel_rest_length = 0.1
+wheel_friction_slip = 2.0
+suspension_stiffness = 45.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelL2"]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -1.19209e-07, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 3 )
