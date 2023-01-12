@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://meshes/lab/lablamp1.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.720879, 0.0992764, 0.147803 )
+
+[node name="lamp" type="StaticBody"]
+
+[node name="lablamp1" type="MeshInstance" parent="."]
+transform = Transform( 1.59577, 0, 0, 0, 1.59577, 0, 0, 0, 1.59577, 0, -1.04255, 0 )
+mesh = ExtResource( 1 )
+
+[node name="SpotLight" type="SpotLight" parent="lablamp1"]
+transform = Transform( 0.626658, 0, 0, 0, -2.73921e-08, 0.626658, 0, -0.626658, -2.73921e-08, 0, 0, 0 )
+light_color = Color( 0.658824, 0.8, 0.933333, 1 )
+spot_range = 22.218
+spot_angle = 63.57
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0266, 0 )
+shape = SubResource( 1 )

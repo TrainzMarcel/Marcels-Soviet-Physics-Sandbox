@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/windowgasket.obj-7462504d8b59abf063a98e92b686dd2a.mesh"
+
+[deps]
+
+files=[ "res://.import/windowgasket.obj-7462504d8b59abf063a98e92b686dd2a.mesh" ]
+
+source_file="res://meshes/train750mm/windowgasket.obj"
+dest_files=[ "res://.import/windowgasket.obj-7462504d8b59abf063a98e92b686dd2a.mesh", "res://.import/windowgasket.obj-7462504d8b59abf063a98e92b686dd2a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,30 +1,74 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/VehicleSeat.tscn" type="PackedScene" id=1]
-[ext_resource path="res://meshes/750dieselloco.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://meshes/train750mm/driverseat.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://prefabs/locomotive750a.lua" type="Script" id=3]
+[ext_resource path="res://meshes/train750mm/seattexture.png" type="Texture" id=4]
+[ext_resource path="res://meshes/train750mm/taillights.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://meshes/train750mm/Metal011_1K_white.jpg" type="Texture" id=6]
+[ext_resource path="res://meshes/train750mm/locotexture.png" type="Texture" id=7]
+[ext_resource path="res://meshes/train750mm/body.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://meshes/train750mm/headlights.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://meshes/star.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://meshes/window.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://meshes/train750mm/windowgasket.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://meshes/train750mm/TexturesCom_MetalFloorsBare0016_3_seamless_S.jpg" type="Texture" id=13]
+[ext_resource path="res://meshes/train750mm/footplate.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://meshes/wheel.obj" type="ArrayMesh" id=15]
+[ext_resource path="res://meshes/trainwheel.png" type="Texture" id=16]
+[ext_resource path="res://meshes/train750mm/controls.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://meshes/train750mm/reverser.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://meshes/train750mm/brake.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://meshes/train750mm/throttle.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://scenes/RotationNode.tscn" type="PackedScene" id=21]
+[ext_resource path="res://meshes/train750mm/needle.obj" type="ArrayMesh" id=22]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.905882, 0.529412, 0.105882, 1 )
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0.847059, 0.85098, 0.360784, 1 )
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0.811765, 0.262745, 0.262745, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 1, 1, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=26]
+flags_transparent = true
+albedo_color = Color( 0.823529, 0.917647, 1, 0.0980392 )
+
+[sub_resource type="SpatialMaterial" id=19]
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_texture = ExtResource( 13 )
+
+[sub_resource type="SpatialMaterial" id=23]
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=24]
+albedo_color = Color( 0.831373, 0.133333, 0.133333, 1 )
+
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 1, 0.102744, 2.42996 )
 
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.3, 0.2, 0.3 )
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 4 )
 
-[sub_resource type="CubeMesh" id=3]
-size = Vector3( 0.6, 0.4, 0.6 )
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.303873, 0.0522086, 0.269752 )
 
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.113725, 0.133333, 0.180392, 1 )
-
-[sub_resource type="BoxShape" id=8]
-extents = Vector3( 0.3, 0.2, 0.3 )
-
-[sub_resource type="CylinderMesh" id=6]
-top_radius = 0.378
-bottom_radius = 0.3
-height = 0.075
-radial_segments = 14
-rings = 0
+[sub_resource type="SpatialMaterial" id=25]
+albedo_texture = ExtResource( 16 )
 
 [sub_resource type="CylinderMesh" id=7]
 top_radius = 0.15
@@ -35,36 +79,276 @@ rings = 0
 
 [node name="VehicleBody" type="VehicleBody"]
 collision_layer = 2
+mass = 1500.0
 script = ExtResource( 3 )
 
-[node name="750dieselloco" type="MeshInstance" parent="."]
-transform = Transform( 1.18277, 0, 0, 0, 1.18277, 0, 0, 0, 1.18277, 0, -0.782326, -1.85473 )
-mesh = ExtResource( 2 )
+[node name="750batteryloco" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.782, 0 )
+mesh = ExtResource( 8 )
+material/0 = SubResource( 12 )
+material/1 = SubResource( 13 )
+
+[node name="headlights" type="MeshInstance" parent="750batteryloco"]
+mesh = ExtResource( 9 )
+material/0 = SubResource( 16 )
+
+[node name="taillights" type="MeshInstance" parent="750batteryloco"]
+mesh = ExtResource( 5 )
+material/0 = SubResource( 17 )
+
+[node name="star" type="MeshInstance" parent="750batteryloco"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787945, 2.46245 )
+mesh = ExtResource( 10 )
+material/0 = SubResource( 14 )
+material/1 = SubResource( 15 )
+
+[node name="star2" type="MeshInstance" parent="750batteryloco"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.788, -2.462 )
+mesh = ExtResource( 10 )
+material/0 = SubResource( 14 )
+material/1 = SubResource( 15 )
+
+[node name="window" type="MeshInstance" parent="750batteryloco"]
+mesh = ExtResource( 11 )
+material/0 = SubResource( 26 )
+
+[node name="windowgasket" type="MeshInstance" parent="750batteryloco"]
+mesh = ExtResource( 12 )
+material/0 = SubResource( 19 )
+
+[node name="footplate" type="MeshInstance" parent="750batteryloco"]
+mesh = ExtResource( 14 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 20 )
+
+[node name="controls" type="Spatial" parent="750batteryloco"]
+
+[node name="controls" type="MeshInstance" parent="750batteryloco/controls"]
+mesh = ExtResource( 17 )
+material/0 = SubResource( 23 )
+
+[node name="needle" type="MeshInstance" parent="750batteryloco/controls/controls"]
+transform = Transform( 0.431745, 0, 0, 0, 0.405707, -0.147665, 0, 0.147665, 0.405707, 0.281361, 1.12959, 2.30544 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="needle2" type="MeshInstance" parent="750batteryloco/controls/controls"]
+transform = Transform( 0.431745, 0, 0, 0, 0.405707, -0.147665, 0, 0.147665, 0.405707, 0.281361, 1.07818, 2.28673 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="needle3" type="MeshInstance" parent="750batteryloco/controls/controls"]
+transform = Transform( 0.8, 0, 0, 0, 0.751754, -0.273616, 0, 0.273616, 0.751754, 0.218949, 1.11015, 2.30137 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="needle4" type="MeshInstance" parent="750batteryloco/controls/controls"]
+transform = Transform( 0.8, 0, 0, 0, 0.751754, -0.273616, 0, 0.273616, 0.751754, 0.218949, 1.06558, 2.28515 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="RotationNode" parent="750batteryloco/controls/controls" instance=ExtResource( 21 )]
+transform = Transform( 0.923539, 0.0698949, -0.377083, 0, 0.983252, 0.182253, 0.383506, -0.168317, 0.908071, 0.0252651, 1.2596, 2.28217 )
+axis = "z"
+angleoffset = -132.0
+anglemult = 264.0
+
+[node name="needle5" type="MeshInstance" parent="750batteryloco/controls/controls/RotationNode"]
+transform = Transform( 1, 4.47035e-08, 8.9407e-08, 0, 1, -4.47035e-08, 0, -1.49012e-08, 1, 0, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 24 )
+
+[node name="RotationNode" parent="750batteryloco/controls" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.77586, 1.04339, 2.09755 )
+angleoffset = 28.0
+
+[node name="throttle" type="MeshInstance" parent="750batteryloco/controls/RotationNode"]
+transform = Transform( 0.882947, 0, 0.469471, 0, 1, 0, -0.469471, 0, 0.882947, 0, 0, 0 )
+mesh = ExtResource( 20 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 23 )
+
+[node name="RotationNode2" parent="750batteryloco/controls" instance=ExtResource( 21 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00837088, 1.07697, 2.09812 )
+inverted = true
+anglemult = 60.0
+
+[node name="brake" type="MeshInstance" parent="750batteryloco/controls/RotationNode2"]
+mesh = ExtResource( 19 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 23 )
+
+[node name="RotationNode3" parent="750batteryloco/controls" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.481978, 0.987306, 2.12657 )
+angleoffset = 30.0
+anglemult = 30.0
+
+[node name="reverser" type="MeshInstance" parent="750batteryloco/controls/RotationNode3"]
+transform = Transform( 0.866025, 5.32907e-15, 0.5, 7.45058e-08, 1, -1.49012e-07, -0.5, 8.9407e-08, 0.866025, 0, 0, 0 )
+mesh = ExtResource( 18 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 23 )
+
+[node name="controls2" type="Spatial" parent="750batteryloco"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0 )
+
+[node name="controls" type="MeshInstance" parent="750batteryloco/controls2"]
+mesh = ExtResource( 17 )
+material/0 = SubResource( 23 )
+
+[node name="needle" type="MeshInstance" parent="750batteryloco/controls2/controls"]
+transform = Transform( 0.431745, 0, 0, 0, 0.405707, -0.147665, 0, 0.147665, 0.405707, 0.281361, 1.12959, 2.30544 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="RotationNode" parent="750batteryloco/controls2/controls" instance=ExtResource( 21 )]
+transform = Transform( 0.923539, 0.0698949, -0.377083, 0, 0.983252, 0.182253, 0.383506, -0.168317, 0.908071, 0.0252651, 1.2596, 2.28217 )
+axis = "z"
+angleoffset = -132.0
+anglemult = 264.0
+
+[node name="needle5" type="MeshInstance" parent="750batteryloco/controls2/controls/RotationNode"]
+transform = Transform( 1, 7.45058e-09, 0, 2.98023e-08, 1, -4.47035e-08, 0, -1.49012e-08, 1, 0, 0, 0 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 24 )
+
+[node name="needle2" type="MeshInstance" parent="750batteryloco/controls2/controls"]
+transform = Transform( 0.431745, 0, 0, 0, 0.405707, -0.147665, 0, 0.147665, 0.405707, 0.281361, 1.07818, 2.28673 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="needle3" type="MeshInstance" parent="750batteryloco/controls2/controls"]
+transform = Transform( 0.8, 0, 0, 0, 0.751754, -0.273616, 0, 0.273616, 0.751754, 0.218949, 1.11015, 2.30137 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="needle4" type="MeshInstance" parent="750batteryloco/controls2/controls"]
+transform = Transform( 0.8, 0, 0, 0, 0.751754, -0.273616, 0, 0.273616, 0.751754, 0.218949, 1.06558, 2.28515 )
+mesh = ExtResource( 22 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 24 )
+
+[node name="RotationNode" parent="750batteryloco/controls2" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.77586, 1.04339, 2.09755 )
+angleoffset = 28.0
+
+[node name="throttle" type="MeshInstance" parent="750batteryloco/controls2/RotationNode"]
+transform = Transform( 0.882947, 0, 0.469471, 0, 1, 0, -0.469471, 0, 0.882947, 0, 0, 0 )
+mesh = ExtResource( 20 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 23 )
+
+[node name="RotationNode2" parent="750batteryloco/controls2" instance=ExtResource( 21 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00837088, 1.07697, 2.09812 )
+inverted = true
+anglemult = 60.0
+
+[node name="brake" type="MeshInstance" parent="750batteryloco/controls2/RotationNode2"]
+mesh = ExtResource( 19 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 23 )
+
+[node name="RotationNode3" parent="750batteryloco/controls2" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.481978, 0.987306, 2.12657 )
+inverted = true
+angleoffset = 30.0
+anglemult = 30.0
+
+[node name="reverser" type="MeshInstance" parent="750batteryloco/controls2/RotationNode3"]
+transform = Transform( 0.866025, 5.32907e-15, 0.5, 7.45058e-08, 1, -1.49012e-07, -0.5, 8.9407e-08, 0.866025, 0, 0, 0 )
+mesh = ExtResource( 18 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 23 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46394, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 
 [node name="VehicleSeat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44477, 0.296749, -1.63702 )
 
-[node name="CollisionShape" type="CollisionShape" parent="VehicleSeat"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.615817, -0.0566965 )
-shape = SubResource( 2 )
-
-[node name="MeshInstance" type="MeshInstance" parent="VehicleSeat/CollisionShape"]
-mesh = SubResource( 3 )
+[node name="driverseat" type="MeshInstance" parent="VehicleSeat"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.314787, 0 )
+mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 5 )
+material/0 = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.338719, 0 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="VehicleSeat"]
-transform = Transform( 1, 0, 0, 0, 0.000430174, 1.83455, 0, -0.432391, 0.00182512, 0, 0.0227453, 0.226373 )
-shape = SubResource( 8 )
+transform = Transform( 1, 8.50948e-08, 6.73825e-08, -8.50948e-08, 0.229234, 0.973371, 6.73825e-08, -0.973371, 0.229234, -2.98023e-08, -0.0792839, 0.260669 )
+shape = SubResource( 11 )
 
-[node name="MeshInstance" type="MeshInstance" parent="VehicleSeat/CollisionShape2"]
-mesh = SubResource( 3 )
+[node name="VehicleSeat2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.445, 0.297, 1.637 )
+
+[node name="driverseat" type="MeshInstance" parent="VehicleSeat2"]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.314787, 0 )
+mesh = ExtResource( 2 )
 skeleton = NodePath("../..")
-material/0 = SubResource( 5 )
+material/0 = SubResource( 10 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VehicleSeat2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.338719, 0 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="VehicleSeat2"]
+transform = Transform( 1, 8.50948e-08, 6.73825e-08, -8.50948e-08, 0.229234, 0.973371, 6.73825e-08, -0.973371, 0.229234, -2.98023e-08, -0.0792839, 0.260669 )
+shape = SubResource( 11 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_left = 1.0
+margin_top = -80.0
+margin_right = 141.0
+margin_bottom = 36.0
+color = Color( 0, 0, 0, 0.403922 )
+
+[node name="throttle" type="RichTextLabel" parent="Control"]
+margin_left = 4.0
+margin_top = -72.0
+margin_right = 122.0
+margin_bottom = -32.0
+text = "throttle = 0"
+
+[node name="speed" type="RichTextLabel" parent="Control"]
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 122.0
+margin_bottom = 46.0
+text = "speed = 0"
+
+[node name="brake" type="RichTextLabel" parent="Control"]
+margin_left = 4.0
+margin_top = -45.0
+margin_right = 122.0
+margin_bottom = -5.0
+text = "brake = 0"
+
+[node name="reverser" type="RichTextLabel" parent="Control"]
+margin_left = 4.0
+margin_top = -20.0
+margin_right = 122.0
+margin_bottom = 20.0
+text = "reverser = neutral"
 
 [node name="--------------------" type="Node" parent="."]
 
@@ -72,78 +356,84 @@ material/0 = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.506304, -1 )
 use_as_traction = true
 wheel_roll_influence = 0.05
-wheel_radius = 0.35
+wheel_radius = 0.323
 wheel_rest_length = 0.1
-wheel_friction_slip = 0.0
+wheel_friction_slip = 0.1
 suspension_travel = 0.1
 suspension_stiffness = 55.0
-suspension_max_force = 8000.0
+suspension_max_force = 75000.0
 damping_compression = 0.9
 damping_relaxation = 0.9
 
 [node name="MeshInstance" type="MeshInstance" parent="L1"]
-transform = Transform( -4.37114e-08, 1, -8.9407e-08, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 8.9407e-08, 1, 0.1, 0, 0 )
-mesh = SubResource( 6 )
+transform = Transform( -1, 1.50996e-07, -8.9407e-08, -1.50996e-07, -1, 8.9407e-08, -8.9407e-08, 8.9407e-08, 1, 0.1, 0, 0 )
+mesh = ExtResource( 15 )
+material/0 = SubResource( 25 )
 
 [node name="L2" type="VehicleWheel" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.506304, 1 )
 wheel_roll_influence = 0.05
-wheel_radius = 0.35
+wheel_radius = 0.323
 wheel_rest_length = 0.1
-wheel_friction_slip = 0.0
+wheel_friction_slip = 0.1
 suspension_travel = 0.1
 suspension_stiffness = 55.0
-suspension_max_force = 8000.0
+suspension_max_force = 75000.0
 damping_compression = 0.9
 damping_relaxation = 0.9
 
 [node name="MeshInstance" type="MeshInstance" parent="L2"]
-transform = Transform( -4.37114e-08, 1, -8.9407e-08, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 8.9407e-08, 1, 0.1, 0, 0 )
-mesh = SubResource( 6 )
+transform = Transform( -1, 1.50996e-07, -8.9407e-08, -1.50996e-07, -1, 8.9407e-08, -8.9407e-08, 8.9407e-08, 1, 0.1, 0, 0 )
+mesh = ExtResource( 15 )
+material/0 = SubResource( 25 )
 
 [node name="R1" type="VehicleWheel" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.506304, -1 )
 use_as_traction = true
 wheel_roll_influence = 0.05
-wheel_radius = 0.35
+wheel_radius = 0.323
 wheel_rest_length = 0.1
-wheel_friction_slip = 0.0
+wheel_friction_slip = 0.1
 suspension_travel = 0.1
 suspension_stiffness = 55.0
-suspension_max_force = 8000.0
+suspension_max_force = 75000.0
 damping_compression = 0.9
 damping_relaxation = 0.9
 
 [node name="MeshInstance" type="MeshInstance" parent="R1"]
-transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -8.9407e-08, 1, -0.1, 5.96046e-08, 0 )
-mesh = SubResource( 6 )
+transform = Transform( 1, -7.99361e-15, -8.9407e-08, 0, 1, -8.9407e-08, 8.9407e-08, 8.9407e-08, 1, -0.1, 5.96046e-08, 0 )
+mesh = ExtResource( 15 )
+material/0 = SubResource( 25 )
 
 [node name="R2" type="VehicleWheel" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.506304, 1 )
 wheel_roll_influence = 0.05
-wheel_radius = 0.35
+wheel_radius = 0.323
 wheel_rest_length = 0.1
-wheel_friction_slip = 0.0
+wheel_friction_slip = 0.1
 suspension_travel = 0.1
 suspension_stiffness = 55.0
-suspension_max_force = 8000.0
+suspension_max_force = 75000.0
 damping_compression = 0.9
 damping_relaxation = 0.9
 
 [node name="MeshInstance" type="MeshInstance" parent="R2"]
-transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -8.9407e-08, 1, -0.1, 5.96046e-08, 0 )
-mesh = SubResource( 6 )
+transform = Transform( 1, -7.99361e-15, -8.9407e-08, 0, 1, -8.9407e-08, 8.9407e-08, 8.9407e-08, 1, -0.1, 5.96046e-08, 0 )
+mesh = ExtResource( 15 )
+material/0 = SubResource( 25 )
 
 [node name="--------------------2" type="Node" parent="."]
 
 [node name="GL1" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.935706, -1 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.916, -1 )
+visible = false
 use_as_traction = true
 wheel_radius = 0.2
 wheel_rest_length = 0.1
 wheel_friction_slip = 0.0
 suspension_travel = 0.1
-suspension_stiffness = 25.0
+suspension_stiffness = 45.0
+suspension_max_force = 75000.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
@@ -152,13 +442,15 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [node name="GL2" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.935706, 1 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.916, 1 )
+visible = false
 use_as_traction = true
 wheel_radius = 0.2
 wheel_rest_length = 0.1
 wheel_friction_slip = 0.0
 suspension_travel = 0.1
-suspension_stiffness = 25.0
+suspension_stiffness = 45.0
+suspension_max_force = 75000.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
@@ -167,13 +459,15 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [node name="GR1" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.935706, -1 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.916, -1 )
+visible = false
 use_as_traction = true
 wheel_radius = 0.2
 wheel_rest_length = 0.1
 wheel_friction_slip = 0.0
 suspension_travel = 0.1
-suspension_stiffness = 25.0
+suspension_stiffness = 45.0
+suspension_max_force = 75000.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
@@ -182,13 +476,15 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [node name="GR2" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.935706, 1 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.916, 1 )
+visible = false
 use_as_traction = true
 wheel_radius = 0.2
 wheel_rest_length = 0.1
 wheel_friction_slip = 0.0
 suspension_travel = 0.1
-suspension_stiffness = 25.0
+suspension_stiffness = 45.0
+suspension_max_force = 75000.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
@@ -197,3 +493,4 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [connection signal="pressed" from="VehicleSeat" to="." method="_on_VehicleSeat_pressed"]
+[connection signal="pressed" from="VehicleSeat2" to="." method="_on_VehicleSeat2_pressed"]

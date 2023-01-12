@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/mound.obj-7e89058596d18e87650532c8a32441d3.mesh"
+
+[deps]
+
+files=[ "res://.import/mound.obj-7e89058596d18e87650532c8a32441d3.mesh" ]
+
+source_file="res://meshes/mound.obj"
+dest_files=[ "res://.import/mound.obj-7e89058596d18e87650532c8a32441d3.mesh", "res://.import/mound.obj-7e89058596d18e87650532c8a32441d3.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

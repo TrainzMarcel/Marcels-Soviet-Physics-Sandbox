@@ -132,26 +132,44 @@ function cam:rayfunc()
 	end
 end
 --------------------------------------------------------------------------------
+function cam:zoom()
+	local function lerp(pos1, pos2, perc)
+			return (1-perc)*pos1 + perc*pos2 --linear interpolation
+	end
+	
+	local targetfov = 90
+	
+	if Input:is_action_pressed("right_cl") then
+		targetfov = 30
+	end
+	
+	self.fpcam.fov = lerp(targetfov, self.fpcam.fov, 0.9)
+end
+
+--------------------------------------------------------------------------------
 
 function cam:_process(delta)
 	self.ray.enabled = self.fpcam.current
-	if self.active then
-		
-		self:rayfunc()
-		self:camswitcher()
-		--moved to process for active scaling
-		self.screenwidth = OS.window_size.x
-		self.screenheight = OS.window_size.y
-		self.screencenter = Vector2(cam.screenwidth/2, cam.screenheight/2)
+	if not self.active then
+		return
 	end
+	self:rayfunc()
+	self:camswitcher()
+	self:zoom()
+	--moved to process for active scaling
+	self.screenwidth = OS.window_size.x
+	self.screenheight = OS.window_size.y
+	self.screencenter = Vector2(cam.screenwidth/2, cam.screenheight/2)
+	
 end
 --------------------------------------------------------------------------------
 
 function cam:_input(event)
-	if self.active then
-		self:view(self, event)
-		self:scroll(event)
+	if not self.active then
+		return
 	end
+	self:view(self, event)
+	self:scroll(event)
 end
 
 return cam

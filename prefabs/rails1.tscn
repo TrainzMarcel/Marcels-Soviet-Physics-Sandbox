@@ -9,7 +9,6 @@ uv1_scale = Vector3( 5, 5, 5 )
 uv1_triplanar = true
 
 [node name="rails1" type="CSGPolygon"]
-use_collision = true
 polygon = PoolVector2Array( 0.375, 0.15, 0.45, 0.15, 0.45, -0.1, -0.45, -0.1, -0.45, 0.15, -0.375, 0.15, -0.375, -0.08, 0.375, -0.08 )
 mode = 2
 path_node = NodePath("")

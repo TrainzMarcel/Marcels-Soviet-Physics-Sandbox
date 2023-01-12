@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/driverseat.obj-e950b77a4cb7f46528641badd8dfe676.mesh"
+
+[deps]
+
+files=[ "res://.import/driverseat.obj-e950b77a4cb7f46528641badd8dfe676.mesh" ]
+
+source_file="res://meshes/train750mm/driverseat.obj"
+dest_files=[ "res://.import/driverseat.obj-e950b77a4cb7f46528641badd8dfe676.mesh", "res://.import/driverseat.obj-e950b77a4cb7f46528641badd8dfe676.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

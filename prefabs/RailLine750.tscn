@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://prefabs/rails1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/railcollider.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve3D" id=1]
+resource_local_to_scene = true
+_data = {
+"points": PoolVector3Array(  ),
+"tilts": PoolRealArray(  )
+}
+
+[node name="RailLine750" type="Path"]
+curve = SubResource( 1 )
+__meta__ = {
+"_editor_description_": "rail line for 750mm trains. uses path node. ctrl for snapping when dragging path, shift or alt click to drag curve handles."
+}
+
+[node name="rails1" parent="." instance=ExtResource( 1 )]
+path_node = NodePath("..")
+
+[node name="Collider" parent="." instance=ExtResource( 2 )]
+visible = false
+path_node = NodePath("..")

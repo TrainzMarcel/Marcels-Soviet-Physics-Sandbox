@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/collider.obj-69a6e2cf0ce0ceff1384e1a634bb7347.mesh"
+
+[deps]
+
+files=[ "res://.import/collider.obj-69a6e2cf0ce0ceff1384e1a634bb7347.mesh" ]
+
+source_file="res://meshes/tracks/junction/1/collider/collider.obj"
+dest_files=[ "res://.import/collider.obj-69a6e2cf0ce0ceff1384e1a634bb7347.mesh", "res://.import/collider.obj-69a6e2cf0ce0ceff1384e1a634bb7347.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
