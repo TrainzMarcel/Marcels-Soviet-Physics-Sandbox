@@ -12,7 +12,7 @@ plr.jumpheight = export {2.3}
 function plr:_ready()
 	plr.cam = self:get_node("CameraNode")
 	plr.collider = self:get_node("CollisionShape")
-	plr.groundarea = self:get_node("Area")
+	plr.ray = self:get_node("RayCast")
 	plr.mesh = self:get_node("MeshInstance")
 end
 --------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ end
 --------------------------------------------------------------------------------
 
 --wasd and view direction walk function
-function plr:mover(delta, plr)
+function plr:mover(delta)
 
 	--first, create wishdir
 	local forward = Input:is_action_pressed("move_forward")
@@ -61,34 +61,28 @@ function plr:mover(delta, plr)
 	wishdir = wishdir:normalized()
 	
 	--rotate wishdir to camera
-	wishdir = wishdir:rotated(Vector3.UP, plr.cam.global_rotation.y)
+	wishdir = wishdir:rotated(Vector3.UP, self.cam.global_rotation.y)
 	
 	
 	--measure speed with dot
-	local velocity = wishdir:dot(plr.linear_velocity)
+	local velocity = wishdir:dot(self.linear_velocity)
 	
 	--limit speed
 	--addspeed = math.clamp(0, maxspeed - velocity, maxaccel * delta)
 	
 	--print(math.clamp(0, plr.maxspeed - velocity, plr.maxaccel * delta))
 	
-	plr:add_central_force(wishdir * 1000 * delta)--+ addspeed * plr.linear_velocity * delta)
+	self:add_central_force(wishdir * 1000 * delta)--+ addspeed * plr.linear_velocity * delta)
 end
 --------------------------------------------------------------------------------
 
 --simple jump function
 local ground = true
-function plr:jump(plr)
+function plr:jump(delta)
 	local space = Input:is_action_pressed("space")
 	
-	if #plr.groundarea:get_overlapping_bodies() > 1 then
-		ground = true
-	else
-		ground = false
-	end
-	
-	if space and ground then
-		plr:apply_central_impulse(Vector3.UP * plr.jumpheight)
+	if space and self.ray:is_colliding() then
+		self:apply_central_impulse(Vector3.UP * self.jumpheight * 100 * delta)
 	end
 end
 --------------------------------------------------------------------------------
@@ -111,8 +105,8 @@ function plr:_process(delta)
 		self.mesh.visible = true
 		
 		--control functions
-		self:mover(delta, self)
-		self:jump(self)
+		self:mover(delta)
+		self:jump(delta)
 	else
 		--disable collision
 		self.collider.disabled = true

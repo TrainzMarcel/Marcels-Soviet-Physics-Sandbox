@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/brake.obj-9d9a266fc6bfa282d371fc5659d8fd4b.mesh"
+
+[deps]
+
+files=[ "res://.import/brake.obj-9d9a266fc6bfa282d371fc5659d8fd4b.mesh" ]
+
+source_file="res://meshes/train750mm/loco1/brake.obj"
+dest_files=[ "res://.import/brake.obj-9d9a266fc6bfa282d371fc5659d8fd4b.mesh", "res://.import/brake.obj-9d9a266fc6bfa282d371fc5659d8fd4b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

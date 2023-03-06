@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/throttle.obj-0d941a7b6460f062567b5cc0b3e8cc65.mesh"
+
+[deps]
+
+files=[ "res://.import/throttle.obj-0d941a7b6460f062567b5cc0b3e8cc65.mesh" ]
+
+source_file="res://meshes/train750mm/loco1/throttle.obj"
+dest_files=[ "res://.import/throttle.obj-0d941a7b6460f062567b5cc0b3e8cc65.mesh", "res://.import/throttle.obj-0d941a7b6460f062567b5cc0b3e8cc65.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -76,16 +76,6 @@ end
 
 function loco:_physics_process(delta)
 	
-	
-	--not discarding this code yet
-			--self.speed0 = self.linear_velocity:length()
-			--make an average
-			--local acceleration = (self.speed0 - self.speed1) / delta
-			--acceleration = acceleration + (self.speed1 - self.speed2) / delta
-			--acceleration = acceleration + (self.speed2 - self.speed3) / delta
-			
-			--acceleration = acceleration / 4
-	
 	--brake
 	local vel = self.linear_velocity:dot(-self.transform.basis:get_axis(2))
 	

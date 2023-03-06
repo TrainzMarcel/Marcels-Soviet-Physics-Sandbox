@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/locotexture.png-1c072806bf2ae490329c9402661b4cf0.s3tc.stex"
-path.etc2="res://.import/locotexture.png-1c072806bf2ae490329c9402661b4cf0.etc2.stex"
+path.s3tc="res://.import/couplertexture.png-594527e108991f8ec3a2711bd6243a6f.s3tc.stex"
+path.etc2="res://.import/couplertexture.png-594527e108991f8ec3a2711bd6243a6f.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://meshes/train750mm/locotexture.png"
-dest_files=[ "res://.import/locotexture.png-1c072806bf2ae490329c9402661b4cf0.s3tc.stex", "res://.import/locotexture.png-1c072806bf2ae490329c9402661b4cf0.etc2.stex" ]
+source_file="res://meshes/train750mm/couplertexture.png"
+dest_files=[ "res://.import/couplertexture.png-594527e108991f8ec3a2711bd6243a6f.s3tc.stex", "res://.import/couplertexture.png-594527e108991f8ec3a2711bd6243a6f.etc2.stex" ]
 
 [params]
 

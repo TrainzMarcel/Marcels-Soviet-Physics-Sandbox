@@ -41,6 +41,7 @@ singletons=[ "res://addons/godot-lua-pluginscript/lua_pluginscript.gdnlib" ]
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom_font="res://font1.tres"
 
 [input]
 

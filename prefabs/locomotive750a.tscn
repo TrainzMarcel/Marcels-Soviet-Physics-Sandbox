@@ -4,24 +4,24 @@
 [ext_resource path="res://meshes/train750mm/driverseat.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://prefabs/locomotive750a.lua" type="Script" id=3]
 [ext_resource path="res://meshes/train750mm/seattexture.png" type="Texture" id=4]
-[ext_resource path="res://meshes/train750mm/taillights.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://meshes/train750mm/loco1/taillights.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://meshes/train750mm/Metal011_1K_white.jpg" type="Texture" id=6]
-[ext_resource path="res://meshes/train750mm/locotexture.png" type="Texture" id=7]
-[ext_resource path="res://meshes/train750mm/body.obj" type="ArrayMesh" id=8]
-[ext_resource path="res://meshes/train750mm/headlights.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://meshes/train750mm/loco1/locotexture.png" type="Texture" id=7]
+[ext_resource path="res://meshes/train750mm/loco1/body.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://meshes/train750mm/loco1/headlights.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://meshes/star.obj" type="ArrayMesh" id=10]
 [ext_resource path="res://meshes/window.obj" type="ArrayMesh" id=11]
-[ext_resource path="res://meshes/train750mm/windowgasket.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://meshes/train750mm/loco1/windowgasket.obj" type="ArrayMesh" id=12]
 [ext_resource path="res://meshes/train750mm/TexturesCom_MetalFloorsBare0016_3_seamless_S.jpg" type="Texture" id=13]
-[ext_resource path="res://meshes/train750mm/footplate.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://meshes/train750mm/loco1/footplate.obj" type="ArrayMesh" id=14]
 [ext_resource path="res://meshes/wheel.obj" type="ArrayMesh" id=15]
 [ext_resource path="res://meshes/trainwheel.png" type="Texture" id=16]
-[ext_resource path="res://meshes/train750mm/controls.obj" type="ArrayMesh" id=17]
-[ext_resource path="res://meshes/train750mm/reverser.obj" type="ArrayMesh" id=18]
-[ext_resource path="res://meshes/train750mm/brake.obj" type="ArrayMesh" id=19]
-[ext_resource path="res://meshes/train750mm/throttle.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://meshes/train750mm/loco1/controls.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://meshes/train750mm/loco1/reverser.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://meshes/train750mm/loco1/brake.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://meshes/train750mm/loco1/throttle.obj" type="ArrayMesh" id=20]
 [ext_resource path="res://scenes/RotationNode.tscn" type="PackedScene" id=21]
-[ext_resource path="res://meshes/train750mm/needle.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://meshes/train750mm/loco1/needle.obj" type="ArrayMesh" id=22]
 
 [sub_resource type="SpatialMaterial" id=12]
 albedo_color = Color( 0.905882, 0.529412, 0.105882, 1 )
@@ -59,7 +59,7 @@ albedo_texture = ExtResource( 7 )
 albedo_color = Color( 0.831373, 0.133333, 0.133333, 1 )
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 1, 0.102744, 2.42996 )
+extents = Vector3( 0.98, 0.019, 2.435 )
 
 [sub_resource type="SpatialMaterial" id=10]
 albedo_texture = ExtResource( 4 )
@@ -154,8 +154,8 @@ material/0 = SubResource( 24 )
 [node name="RotationNode" parent="750batteryloco/controls/controls" instance=ExtResource( 21 )]
 transform = Transform( 0.923539, 0.0698949, -0.377083, 0, 0.983252, 0.182253, 0.383506, -0.168317, 0.908071, 0.0252651, 1.2596, 2.28217 )
 axis = "z"
-angleoffset = -132.0
 anglemult = 264.0
+angleoffset = -132.0
 
 [node name="needle5" type="MeshInstance" parent="750batteryloco/controls/controls/RotationNode"]
 transform = Transform( 1, 4.47035e-08, 8.9407e-08, 0, 1, -4.47035e-08, 0, -1.49012e-08, 1, 0, 0, 0 )
@@ -185,8 +185,8 @@ material/0 = SubResource( 23 )
 
 [node name="RotationNode3" parent="750batteryloco/controls" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.481978, 0.987306, 2.12657 )
-angleoffset = 30.0
 anglemult = 30.0
+angleoffset = 30.0
 
 [node name="reverser" type="MeshInstance" parent="750batteryloco/controls/RotationNode3"]
 transform = Transform( 0.866025, 5.32907e-15, 0.5, 7.45058e-08, 1, -1.49012e-07, -0.5, 8.9407e-08, 0.866025, 0, 0, 0 )
@@ -210,8 +210,8 @@ material/0 = SubResource( 24 )
 [node name="RotationNode" parent="750batteryloco/controls2/controls" instance=ExtResource( 21 )]
 transform = Transform( 0.923539, 0.0698949, -0.377083, 0, 0.983252, 0.182253, 0.383506, -0.168317, 0.908071, 0.0252651, 1.2596, 2.28217 )
 axis = "z"
-angleoffset = -132.0
 anglemult = 264.0
+angleoffset = -132.0
 
 [node name="needle5" type="MeshInstance" parent="750batteryloco/controls2/controls/RotationNode"]
 transform = Transform( 1, 7.45058e-09, 0, 2.98023e-08, 1, -4.47035e-08, 0, -1.49012e-08, 1, 0, 0, 0 )
@@ -260,8 +260,8 @@ material/0 = SubResource( 23 )
 [node name="RotationNode3" parent="750batteryloco/controls2" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0.481978, 0.987306, 2.12657 )
 inverted = true
-angleoffset = 30.0
 anglemult = 30.0
+angleoffset = 30.0
 
 [node name="reverser" type="MeshInstance" parent="750batteryloco/controls2/RotationNode3"]
 transform = Transform( 0.866025, 5.32907e-15, 0.5, 7.45058e-08, 1, -1.49012e-07, -0.5, 8.9407e-08, 0.866025, 0, 0, 0 )
@@ -270,7 +270,7 @@ skeleton = NodePath("../..")
 material/0 = SubResource( 23 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46394, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.599819, 0 )
 shape = SubResource( 9 )
 
 [node name="VehicleSeat" parent="." instance=ExtResource( 1 )]
@@ -317,43 +317,47 @@ margin_bottom = 20.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 margin_left = 1.0
-margin_top = -80.0
-margin_right = 141.0
-margin_bottom = 36.0
+margin_top = -98.0
+margin_right = 239.0
+margin_bottom = 43.0
 color = Color( 0, 0, 0, 0.403922 )
 
 [node name="throttle" type="RichTextLabel" parent="Control"]
-margin_left = 4.0
-margin_top = -72.0
-margin_right = 122.0
-margin_bottom = -32.0
+margin_left = 10.0
+margin_top = -95.0
+margin_right = 260.0
+margin_bottom = -65.0
+rect_min_size = Vector2( 250, 30 )
 text = "throttle = 0"
 
 [node name="speed" type="RichTextLabel" parent="Control"]
-margin_left = 4.0
-margin_top = 6.0
-margin_right = 122.0
-margin_bottom = 46.0
+margin_left = 10.0
+margin_top = -61.0
+margin_right = 260.0
+margin_bottom = -31.0
+rect_min_size = Vector2( 250, 30 )
 text = "speed = 0"
 
 [node name="brake" type="RichTextLabel" parent="Control"]
-margin_left = 4.0
-margin_top = -45.0
-margin_right = 122.0
-margin_bottom = -5.0
+margin_left = 10.0
+margin_top = -27.0
+margin_right = 260.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 250, 30 )
 text = "brake = 0"
 
 [node name="reverser" type="RichTextLabel" parent="Control"]
-margin_left = 4.0
-margin_top = -20.0
-margin_right = 122.0
-margin_bottom = 20.0
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 260.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 250, 30 )
 text = "reverser = neutral"
 
 [node name="--------------------" type="Node" parent="."]
 
 [node name="L1" type="VehicleWheel" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.506304, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.440319, -1 )
 use_as_traction = true
 wheel_roll_influence = 0.05
 wheel_radius = 0.323
@@ -371,7 +375,7 @@ mesh = ExtResource( 15 )
 material/0 = SubResource( 25 )
 
 [node name="L2" type="VehicleWheel" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.506304, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.440319, 1 )
 wheel_roll_influence = 0.05
 wheel_radius = 0.323
 wheel_rest_length = 0.1
@@ -388,7 +392,7 @@ mesh = ExtResource( 15 )
 material/0 = SubResource( 25 )
 
 [node name="R1" type="VehicleWheel" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.506304, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.440319, -1 )
 use_as_traction = true
 wheel_roll_influence = 0.05
 wheel_radius = 0.323
@@ -406,7 +410,7 @@ mesh = ExtResource( 15 )
 material/0 = SubResource( 25 )
 
 [node name="R2" type="VehicleWheel" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.506304, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.440319, 1 )
 wheel_roll_influence = 0.05
 wheel_radius = 0.323
 wheel_rest_length = 0.1
@@ -425,7 +429,7 @@ material/0 = SubResource( 25 )
 [node name="--------------------2" type="Node" parent="."]
 
 [node name="GL1" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.916, -1 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.850015, -1 )
 visible = false
 use_as_traction = true
 wheel_radius = 0.2
@@ -442,7 +446,7 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [node name="GL2" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.916, 1 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 8.9407e-08, 8.9407e-08, 3.9081e-15, 1, -0.1, -0.850015, 1 )
 visible = false
 use_as_traction = true
 wheel_radius = 0.2
@@ -459,7 +463,7 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [node name="GR1" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.916, -1 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.850015, -1 )
 visible = false
 use_as_traction = true
 wheel_radius = 0.2
@@ -476,7 +480,7 @@ transform = Transform( -4.37114e-08, -1, -8.9407e-08, 1, -4.37114e-08, 8.9407e-0
 mesh = SubResource( 7 )
 
 [node name="GR2" type="VehicleWheel" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.916, 1 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.9407e-08, 8.9407e-08, -3.9081e-15, 1, 0.1, -0.850015, 1 )
 visible = false
 use_as_traction = true
 wheel_radius = 0.2

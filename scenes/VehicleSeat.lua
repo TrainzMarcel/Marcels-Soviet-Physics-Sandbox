@@ -7,7 +7,7 @@ function seat:_ready()
 end
 
 function seat:_on_VehicleSeat_pressed()
-		if self.plr.active ~= self.cam.active then
+	if self.plr.active ~= self.cam.active then
 		
 		if not self.plr.active then
 			local pos = self.translation

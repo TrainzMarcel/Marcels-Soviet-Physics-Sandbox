@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/StartFreezer.lua" type="Script" id=1]
+
+[node name="StartFreezer" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": " must be put under a rigidbody node"
+}

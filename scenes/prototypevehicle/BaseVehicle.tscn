@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/prototypevehicle/SuspensionArm.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/prototypevehicle/BaseVehicle.lua" type="Script" id=2]
+[ext_resource path="res://scenes/VehicleSeat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/cta.jpg" type="Texture" id=4]
+[ext_resource path="res://scenes/StartFreezer.tscn" type="PackedScene" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.3, 0.25, 1.25 )
+
+[sub_resource type="CubeMesh" id=10]
+size = Vector3( 1, 0.5, 2.5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.373723, 0.608956, 0.125399 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.373723, 0.207371, 0.337602 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.723, 1.393, 0.204 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 0.723, 0.291, 0.759 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 4 )
+uv1_scale = Vector3( 3.546, 1.134, 3.544 )
+uv1_offset = Vector3( -0.005, 0, 0.209 )
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id=7]
+material = SubResource( 9 )
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.2
+
+[node name="RigidBody" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+mass = 4.0
+script = ExtResource( 2 )
+
+[node name="StartFreezer" parent="." instance=ExtResource( 5 )]
+timelimit = 3.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+mesh = SubResource( 10 )
+
+[node name="VehicleSeat" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.947028, 0 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 0.990321, -0.138793, 0, 0.138793, 0.990321, 0, -0.088716, 0.308601 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.687857, -0.0471306 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 0.994737, -0.102463, 0, 0.102463, 0.994737, 0, -0.176663, 0.292706 )
+mesh = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="VehicleSeat"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779054, -0.0385284 )
+mesh = SubResource( 6 )
+
+[node name="WheelL1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.9, 0.129779, -0.9 )
+damping = 0.1
+friction = 35.0
+stiffness = 350.0
+max_friction_speed = 20.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelL1"]
+transform = Transform( -4.37114e-08, 1, 2.98023e-08, -1, -4.37114e-08, -2.98023e-08, -2.98023e-08, -2.98023e-08, 1, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[node name="WheelL2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.9, 0.129779, 0.8 )
+damping = 0.1
+friction = 45.0
+stiffness = 350.0
+max_friction_speed = 20.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelL2"]
+transform = Transform( -4.37114e-08, 1, 2.98023e-08, -1, -4.37114e-08, -2.98023e-08, -2.98023e-08, -2.98023e-08, 1, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[node name="WheelR1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.9, 0.129779, -0.9 )
+damping = 0.1
+friction = 35.0
+stiffness = 350.0
+max_friction_speed = 20.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelR1"]
+transform = Transform( -4.37114e-08, 1, 2.98023e-08, -1, -4.37114e-08, -2.98023e-08, -2.98023e-08, -2.98023e-08, 1, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[node name="WheelR2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.9, 0.129779, 0.8 )
+damping = 0.1
+friction = 45.0
+stiffness = 350.0
+max_friction_speed = 20.0
+
+[node name="MeshInstance" type="MeshInstance" parent="WheelR2"]
+transform = Transform( -4.37114e-08, 1, 2.98023e-08, -1, -4.37114e-08, -2.98023e-08, -2.98023e-08, -2.98023e-08, 1, 0, 0, 0 )
+mesh = SubResource( 7 )
+
+[connection signal="pressed" from="VehicleSeat" to="." method="_on_VehicleSeat_pressed"]
